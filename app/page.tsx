@@ -2,6 +2,7 @@ import { Categories, Container, SortPopup, Title, TopBar } from "@/components/sh
 import { Filters } from "@/components/shared/filters";
 import { ProductsGroupList } from "@/components/shared/products-group-list";
 
+
 export default function Home() {
   return ( 
     <>
