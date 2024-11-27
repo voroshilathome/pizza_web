@@ -21,7 +21,7 @@ exports.ProductsGroupList = function (_a) {
         if (intersection === null || intersection === void 0 ? void 0 : intersection.isIntersecting) {
             setActiveCategoryId(categoryId);
         }
-    }, [categoryId, intersection === null || intersection === void 0 ? void 0 : intersection.isIntersecting, title]);
+    }, [categoryId, intersection === null || intersection === void 0 ? void 0 : intersection.isIntersecting, title, setActiveCategoryId]);
     return react_1["default"].createElement("div", { className: className, id: title, ref: intersectionRef },
         react_1["default"].createElement(title_1.Title, { text: title, size: "lg", className: "font-extrabold mb-5" }),
         react_1["default"].createElement("div", { className: utils_1.cn('grid grid-cols-3 gap-[50px]', listClassName) }, items
