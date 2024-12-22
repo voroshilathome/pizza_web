@@ -36,35 +36,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var shared_1 = require("@/components/shared");
-var products_group_list_1 = require("@/components/shared/products-group-list");
-var prisma_client_1 = require("@/prisma/prisma-client");
-function Home() {
+var shared_1 = require("@/shared/components/shared");
+var products_group_list_1 = require("@/shared/components/shared/products-group-list");
+var react_1 = require("react");
+var find_pizzas_1 = require("@/shared/lib/find-pizzas");
+function Home(_a) {
+    var searchParams = _a.searchParams;
     return __awaiter(this, void 0, void 0, function () {
-        var categories;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, prisma_client_1.prisma.category.findMany({
-                        include: {
-                            products: {
-                                include: {
-                                    ingredients: true,
-                                    items: true
-                                }
-                            }
-                        }
-                    })];
+        var params, categories;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, searchParams];
                 case 1:
-                    categories = _a.sent();
+                    params = _b.sent();
+                    return [4 /*yield*/, find_pizzas_1.findPizzas(params)];
+                case 2:
+                    categories = _b.sent();
                     return [2 /*return*/, (React.createElement(React.Fragment, null,
                             React.createElement(shared_1.Container, { className: "mt-10" },
                                 React.createElement(shared_1.Title, { text: "\u0412\u0441\u0435 \u043F\u0438\u0446\u0446\u044B", size: "lg", className: "font-extrabold" })),
                             React.createElement(shared_1.TopBar, { categories: categories.filter(function (category) { return category.products.length > 0; }) }),
                             React.createElement(shared_1.Container, { className: "mt-10 pb-14" },
                                 React.createElement("div", { className: "flex gap-[80px]" },
-                                    " ",
                                     React.createElement("div", { className: "w-[250px]" },
-                                        React.createElement(shared_1.Filters, null)),
+                                        React.createElement(react_1.Suspense, null,
+                                            React.createElement(shared_1.Filters, null))),
                                     React.createElement("div", { className: "flex-1" },
                                         React.createElement("div", { className: "flex flex-col gap-16" }, categories.map(function (category) {
                                             return category.products.length > 0 && (React.createElement(products_group_list_1.ProductsGroupList, { key: category.id, title: category.name, categoryId: category.id, items: category.products }));

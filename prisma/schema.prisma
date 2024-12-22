@@ -4,7 +4,8 @@ generator client {
 
 datasource db {
     provider  = "postgresql"
-    url       = env("DATABASE_POSTGRES_URL")
+    url       = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -14,7 +15,7 @@ model User {
     email    String   @unique
     password String
     role     UserRole @default(USER)
-    verified DateTime
+    verified DateTime?
 
     provider   String?
     providerId String?
@@ -104,7 +105,7 @@ model CartItem {
     productItem   ProductItem @relation(fields: [productItemId], references: [id])
     productItemId Int
 
-    quantity Int
+    quantity Int @default(1)
 
     ingredients Ingredient[]
 

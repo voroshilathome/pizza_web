@@ -2,6 +2,7 @@
 exports.__esModule = true;
 var google_1 = require("next/font/google");
 require("./globals.css");
+var providers_1 = require("@/shared/components/shared/providers");
 var nunito = google_1.Nunito({
     subsets: ["cyrillic"],
     variable: "--font-nunito",
@@ -12,6 +13,7 @@ function RootLayout(_a) {
     return (React.createElement("html", { lang: "en" },
         React.createElement("head", null,
             React.createElement("link", { "data-rh": "true", rel: "icon", href: "/logo.png" })),
-        React.createElement("body", { className: nunito.className }, children)));
+        React.createElement("body", { className: nunito.className },
+            React.createElement(providers_1.Providers, null, children))));
 }
 exports["default"] = RootLayout;
