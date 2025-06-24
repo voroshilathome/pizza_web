@@ -65,7 +65,7 @@ model ProductItem {
     product   Product @relation(fields: [productId], references: [id])
     productId Int
 }
-
+    
 model Ingredient {
     id Int @id @default(autoincrement())
 
